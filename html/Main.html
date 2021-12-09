@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/Social/js/Post.js"></script>
+    <script src="/Social/js/GetPost.js"></script>
+    <script src="/Social/js/Like.js"></script>
+    <script src="/Social/js/Dislike.js"></script>
+    <link rel="stylesheet" href="/Social/css/Main.css">
+
+    <script>
+        function Like(id){
+            PostLike(id);
+        }
+
+        function Dislike(id){
+            PostDislike(id);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="Postarea" class="center">
+        <div id="create post">
+            <label for="content">content</label><br>
+            <input type="text" id="content" name="content" required><br><br>
+            <input type="button" id="Submit" value="Post">
+        </div>
+        <hr>
+        <div id="Posts">
+            <div id="1">
+                <div id="Post Info">
+                    <span class="SameLine" id="NameDisplay"> <a>UserName</a> </span>
+                    <span class="SameLine" id="TimePassed"> &nbsp; -6h</span>
+                    <br><br>
+                </div>
+
+                <div id="content">
+                    <p id="Header" style="text-align: left; font-size: 110%; font-weight: 110%;">Hallo</p>
+                    <p id="Tekst" style="text-align: left;"></p><br>
+                </div>
+
+                <div id="Buttons">
+                    <input type="button" id="Like" value="Like" onclick="Like(1)">
+                    <input type="button" id="Dislike" value="Dislike" onclick="Dislike(1)">
+                    <input type="button" id="Comment" value="Comment">
+                </div>
+            </div>
+            <hr>
+
+            <div id="2">
+                <div id="Post Info">
+                    <span class="SameLine" id="NameDisplay"> <a>UserName</a> </span>
+                    <span class="SameLine" id="TimePassed"> &nbsp; -6h</span>
+                    <br><br>
+                </div>
+
+                <div id="content">
+                    <p id="Header" style="text-align: left; font-size: 110%; font-weight: 110%;">Hallo</p>
+                    <p id="Tekst" style="text-align: left;"></p><br>
+                </div>
+
+                <div id="Buttons">
+                    <input type="button" id="Like" value="Like" onclick="Like(2)">
+                    <input type="button" id="Dislike" value="Dislike" onclick="Dislike(2)">
+                    <input type="button" id="Comment" value="Comment">
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

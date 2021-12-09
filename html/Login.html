@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/social/js/Login.js"></script>
+    <script>
+        function ShowPwd() {
+            var x = document.getElementById("pwdInput");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <form name="loginform">
+            <label for="username">Username or email:</label><br>
+            <input type="text" id="UserNameInput" name="loginUser" required><br>
+
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwdInput" name="loginPass" required>
+            Show Password<input type="checkbox" onclick="ShowPwd()"> <br>
+
+            Remember Me<input type="checkbox" id="Remember"><br><br>
+
+            <input type="button" id="Submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
