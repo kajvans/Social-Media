@@ -7,6 +7,7 @@
     <script src="/Social/js/GetPost.js"></script>
     <script src="/Social/js/Like.js"></script>
     <script src="/Social/js/Dislike.js"></script>
+    <script src="/Social/js/Comment.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
 
     <script>
@@ -16,6 +17,11 @@
 
         function Dislike(id){
             PostDislike(id);
+        }
+
+        function BeginComment(id){
+            PostComment(id, "Test");
+            //TODO creating option to set text for comments with an popup
         }
     </script>
 </head>
@@ -44,7 +50,7 @@
                 <div id="Buttons">
                     <input type="button" id="Like" value="Like" onclick="Like(1)">
                     <input type="button" id="Dislike" value="Dislike" onclick="Dislike(1)">
-                    <input type="button" id="Comment" value="Comment">
+                    <input type="button" id="Comment" value="Comment" onclick="BeginComment(1)">
                 </div>
             </div>
             <hr>
@@ -64,7 +70,7 @@
                 <div id="Buttons">
                     <input type="button" id="Like" value="Like" onclick="Like(2)">
                     <input type="button" id="Dislike" value="Dislike" onclick="Dislike(2)">
-                    <input type="button" id="Comment" value="Comment">
+                    <input type="button" id="Comment" value="Comment" onclick="BeginComment(2)">
                 </div>
                 <hr>
             </div>
