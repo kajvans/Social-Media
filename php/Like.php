@@ -1,9 +1,12 @@
 <?php
 
-$servername = "localhost";
-$username = "likes";
-$password = "j--]kpNxWo2cAxTF";
-$dbname = "social";
+$str = file_get_contents('ConnectionInfo.json');
+$json = json_decode($str);
+
+$servername = $json->Login[2]->servername;
+$username = $json->Login[2]->username;
+$password = $json->Login[2]->password;
+$dbname = $json->Login[2]->dbname;
 
 $Id = $_POST["Id"];
 $User = $_POST["User"];
@@ -22,7 +25,9 @@ $result2 = $statement2->get_result();
 
 
 if($result2->num_rows > 0){
-	echo "already liked";
+	$sql5 = $conn->query("DELETE FROM likes WHERE Post_id = $Id AND user_id = $User");
+	$sql6 = $conn->query("UPDATE post SET likes = likes - 1 WHERE id = $Id");
+	echo "deleted";
 }
 
 else {

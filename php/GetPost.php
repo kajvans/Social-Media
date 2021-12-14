@@ -1,9 +1,13 @@
 <?php
 
-$servername = "localhost";
-$username = "ProductData";
-$password = "zand22";
-$dbname = "social";
+$str = file_get_contents('ConnectionInfo.json');
+$json = json_decode($str);
+
+//database info
+$servername = $json->Login[0]->servername;
+$username = $json->Login[0]->username;
+$password = $json->Login[0]->password;
+$dbname = $json->Login[0]->dbname;
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

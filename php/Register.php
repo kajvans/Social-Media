@@ -4,11 +4,14 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$str = file_get_contents('ConnectionInfo.json');
+$json = json_decode($str);
+
 //database info
-$servername = "localhost";
-$username = "Register";
-$password = "PaaSW6nTyNYrf1pL";
-$dbname = "social";
+$servername = $json->Login[4]->servername;
+$username = $json->Login[4]->username;
+$password = $json->Login[4]->password;
+$dbname = $json->Login[4]->dbname;
 
 //by user
 $loginUser = $_POST["loginUser"];

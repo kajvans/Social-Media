@@ -1,10 +1,13 @@
 <?php
 
+$str = file_get_contents('ConnectionInfo.json');
+$json = json_decode($str);
+
 //database info
-$servername = "localhost";
-$username = "login";
-$password = "9c84B83UPDeubBIq";
-$dbname = "social";
+$servername = $json->Login[3]->servername;
+$username = $json->Login[3]->username;
+$password = $json->Login[3]->password;
+$dbname = $json->Login[3]->dbname;
 
 //by user
 $loginUser = $_POST["loginUser"];
