@@ -13,8 +13,8 @@ $(document).ready(function () {
             info.id = "Post Info " + i;
             document.getElementById("post " + data[i].id).appendChild(info);
 
-            info.innerHTML = `<span class='SameLine' id='NameDisplay'> <a>${data[i].name}</a> 
-            </span> <span class='SameLine' id='TimePassed'> 
+            info.innerHTML = `<button class='SameLine' id='NameDisplay'>${data[i].name}</button> 
+            <span class='SameLine' id='TimePassed'> 
             &nbsp; ${data[i].created}</span> <br><br>`
 
             let content = document.createElement("div");

@@ -1,3 +1,11 @@
+.RightDiv{
+    position: fixed; margin: 0; top: 3%; left: 25%;
+}
+
+.LeftDiv{
+    position: fixed; margin: 0; top: 3%; right: 25%;
+}
+
 .center {
     display: block;
     margin-left: 40%;
@@ -8,6 +16,21 @@
     float: left;
     font-size: medium;
     font-weight: bold;
+}
+
+#NameDisplay {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+#SearchInput{
+    border-radius: 25px;
+    width: 100px;
+    height: 75px;
 }
 
 p {
