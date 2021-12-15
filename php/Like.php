@@ -24,13 +24,7 @@ $statement2->execute();
 $result2 = $statement2->get_result(); 
 
 
-if($result2->num_rows > 0){
-	$sql5 = $conn->query("DELETE FROM likes WHERE Post_id = $Id AND user_id = $User");
-	$sql6 = $conn->query("UPDATE post SET likes = likes - 1 WHERE id = $Id");
-	echo "deleted";
-}
-
-else {
+if($result2->num_rows < 1){
 	$sql4 = "SELECT id FROM dislikes WHERE Post_id = $Id AND user_id = $User";
 	$statement = $conn->prepare($sql4);
 	$statement->execute();
@@ -46,6 +40,12 @@ else {
 	$sql3 = $conn->query("INSERT INTO likes (user_id, Post_id) VALUES ($User, $Id)");
 
 	echo "liked";
+}
+
+else {
+	$sql5 = $conn->query("DELETE FROM likes WHERE Post_id = $Id AND user_id = $User");
+	$sql6 = $conn->query("UPDATE post SET likes = likes - 1 WHERE id = $Id");
+	echo "deleted";
 }
 
 $conn->close();

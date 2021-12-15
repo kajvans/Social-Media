@@ -14,15 +14,15 @@
     that are now split in multiple files -->
 
     <script>
-        function Like(id){
-            PostLike(id);
+        function Like(id) {
+            PostLike(id, button);
         }
 
-        function Dislike(id){
+        function Dislike(id) {
             PostDislike(id);
         }
 
-        function BeginComment(id){
+        function BeginComment(id) {
             PostComment(id, "Test");
             //TODO creating option to set text for comments with an popup
         }

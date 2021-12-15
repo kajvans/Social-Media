@@ -1,6 +1,13 @@
-function PostDislike(id){
+var lastcall = 0;
+function PostDislike(id) {
+    var interval = 800;
     var user = sessionStorage.getItem("id");
-    $.post("/Social/php/Dislike.php", { Id: id, User: user}, function (data) {
-        console.log(data);
-    });  
+    var now = Date.now()
+    var user = sessionStorage.getItem("id");
+    if (lastcall + interval < now) {
+        lastcall = now;
+        $.post("/Social/php/Dislike.php", { Id: id, User: user }, function (data) {
+
+        });
+    }
 }

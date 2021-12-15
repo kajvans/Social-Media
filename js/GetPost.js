@@ -2,7 +2,6 @@ $(document).ready(function () {
     var data = [];
     $.get("/Social/php/GetPost.php", function (data) {
         //location.reload();
-        console.log(data);
         data = JSON.parse(data);
 
         for (let i = 0; i < data.length; i++) {
@@ -27,7 +26,7 @@ $(document).ready(function () {
             buttons.id = "Buttons " + i;
             buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="Like(${data[i].id})">
             <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
-            <input type="button" id="Comment" value="Comment" onclick="BeginComment(${data[i].id})">
+            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
             <hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }

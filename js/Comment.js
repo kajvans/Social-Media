@@ -1,9 +1,14 @@
-function PostComment(id, comment){
+var lastcall = 0;
+function PostComment(id) {
     $(document).ready(function () {
+        var interval = 5000;
         var user = sessionStorage.getItem("id");
-        $.post("/Social/php/Comment.php", { Content: comment, id: user, Postid: id }, function (data) {
-            //location.reload();
-            console.log(data);
-        });
+        var now = Date.now()
+        if (lastcall + interval < now) {
+            lastcall = now;
+            $.post("/Social/php/Comment.php", { Content: comment, id: user, Postid: id }, function (data) {
+
+            });
+        }
     });
 }
