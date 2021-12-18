@@ -1,9 +1,8 @@
-$(document).ready(function () {
-    var data = [];
-    $.get("/Social/php/GetPost.php", function (data) {
-        //location.reload();
+function GetProfile(id) {
+    $.post("/Social/php/GetProfile.php", { User: id }, function (data) {
+        //TODO create new html file for the profile page
+        document.getElementById("Posts").innerHTML = "";
         data = JSON.parse(data);
-
         for (let i = 0; i < data.length; i++) {
             var Date = data[i].created;
 
@@ -15,7 +14,7 @@ $(document).ready(function () {
             info.id = "Post Info " + i;
             document.getElementById("post " + data[i].id).appendChild(info);
 
-            info.innerHTML = `<button class='SameLine' id='NameDisplay' onclick="ShowProfilePage(${data[i].user})">${data[i].name}</button> 
+            info.innerHTML = `<button class='SameLine' id='NameDisplay' onclick='ShowProfilePage(${data[i].user})'>${data[i].name}</button> 
             <span class='SameLine' id='TimePassed'>`
 
             if (Date >= 60) {
@@ -54,4 +53,4 @@ $(document).ready(function () {
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }
     });
-});
+}

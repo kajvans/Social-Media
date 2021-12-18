@@ -9,14 +9,19 @@
     <script src="/Social/js/Dislike.js"></script>
     <script src="/Social/js/Comment.js"></script>
     <script src="/Social/js/Search.js"></script>
+    <script src="/Social/js/GetProfile.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
 
     <!-- Creating single javascript file with all the functions 
     that are now split in multiple files -->
 
+
+    <!-- TODO implement seeing time difference between seeing te post and when it was posted 
+    sql query SELECT DATEDIFF(minute, '$created', CURRENT_TIMESTAMP) AS DateDiff;-->
+
     <script>
         function Like(id) {
-            PostLike(id, button);
+            PostLike(id);
         }
 
         function Dislike(id) {
@@ -26,6 +31,11 @@
         function BeginComment(id) {
             PostComment(id, "Test");
             //TODO creating option to set text for comments with an popup
+        }
+
+        function ShowProfilePage(id) {
+            GetProfile(id);
+            //TODO make it possible to go back to main
         }
     </script>
 </head>

@@ -33,6 +33,16 @@
     height: 75px;
 }
 
+#SearchResults{
+    border-radius: 25px;
+    width: 180px;
+}
+
+#NameDisplay:hover{
+    background-color: lightseagreen;
+    border-radius: 10px;
+}
+
 p {
     margin-top: 1%;
     margin-bottom: 1%;

@@ -1,6 +1,6 @@
 var lastcall = 0;
 function PostDislike(id) {
-    var interval = 800;
+    var interval = 600;
     var user = sessionStorage.getItem("id");
     var now = Date.now()
     var user = sessionStorage.getItem("id");
