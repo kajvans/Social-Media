@@ -22,7 +22,7 @@ if($conn->connect_error) {
 }
 
 $stmt = $conn->prepare("INSERT INTO post (user_id, content) VALUES (?, ?)");
-$stmt->bind_param("is", $id , $Content);
+$stmt->bind_param("is", $_SESSION['id'] , $Content);
 $stmt->execute();
 
 $conn->close();

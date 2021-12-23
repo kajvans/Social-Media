@@ -13,18 +13,21 @@ $(document).ready(function () {
 
                     if (data.includes("creating user") && document.getElementById('Remember').checked) {
                         if (localStorage.getItem("CurrentUser" === null)) {
-                            var token = parse[1];
+                            var token = parse[2];
                             localStorage.setItem('CurrentUser', token);
                         }
 
                         else {
                             localStorage.removeItem("CurrentUser");
-                            var token = parse[1];
+                            var token = parse[2];
                             localStorage.setItem('CurrentUser', token);
+
                         }
                     }
 
                     sessionStorage.setItem("id", parse[0]);
+                    sessionStorage.setItem("user", parse[1]);
+                    sessionStorage.setItem("Identifier", parse[3]);
 
                     if (data.includes("creating user")) {
                         location.href = "/Social/html/Main";

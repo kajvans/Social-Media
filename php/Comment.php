@@ -23,7 +23,7 @@ if($conn->connect_error) {
 }
 
 $stmt = $conn->prepare("INSERT INTO comments (Post_id, user_id, Comment) VALUES (?, ?, ?)");
-$stmt->bind_param("iis", $Postid, $id, $Content);
+$stmt->bind_param("iis", $Postid, $_SESSION['id'], $Content);
 $stmt->execute();
 $sql = $conn->query("UPDATE post SET comments = comments + 1 WHERE id = $Id");
 

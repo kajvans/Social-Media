@@ -10,6 +10,7 @@
     <script src="/Social/js/Comment.js"></script>
     <script src="/Social/js/Search.js"></script>
     <script src="/Social/js/GetProfile.js"></script>
+    <script src="/Social/js/CheckLogin.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
 
     <!-- Creating single javascript file with all the functions 
@@ -18,7 +19,7 @@
 
     <!-- TODO implement seeing time difference between seeing te post and when it was posted 
     sql query SELECT DATEDIFF(minute, '$created', CURRENT_TIMESTAMP) AS DateDiff;-->
-
+    
     <script>
         function Like(id) {
             PostLike(id);
@@ -41,17 +42,28 @@
 </head>
 
 <body>
-    <div id="Rightside" class="RightDiv">
-        <div id="SearchInput">
-            <input type="text" id="UserSearchBar" placeholder="Type to search user">
-            <div class="autocom-box" id="SearchResults">
 
-            </div>
+    <div id="TopOverlay" class="center">
+        <div id="TopDisplay">
+            <h3>Home</h3>
+        </div>
+    </div>
+
+    <div id="Rightside" class="RightDiv">
+        <div id="Navigation" class="Grid">
+            <button id="RightNav"><h1>Home</h1></button>
+            <button id="RightNav"><h1>Profile</h1></button>
+            <button id="RightNav"><h1>Settings</h1></button>
+            <button id="RightNav"><h1>Post</h1></button>
         </div>
     </div>
 
     <div id="Leftside" class="LeftDiv">
-        <!-- create left side -->
+        <div id="SearchInput">
+            <input type="text" id="UserSearchBar" placeholder="Type to search user">
+            <div class="autocom-box" id="SearchResults">
+            </div>
+        </div>
     </div>
 
     <div id="Postarea" class="center">

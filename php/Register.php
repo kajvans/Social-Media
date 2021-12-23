@@ -56,14 +56,15 @@ echo "username is taken";
 
 else {
   $hashToken = hash('sha256', $loginPass . $loginEmail . $loginUser);
+  $Identifier = hash('sha256', $loginPass . $loginEmail . $loginUser . $loginIp);
   $hash = password_hash($loginPass, PASSWORD_BCRYPT, $options);
   $date = date("Y-m-d");
-  $stmt = $conn->prepare("INSERT INTO user (Name, email, password, Token, Created, ip) VALUES (?, ?, ?, ?, ?, ?)");
-  $stmt->bind_param("ssssss", $loginUser, $loginEmail, $hash, $hashToken, $date, $loginIp);
+  $stmt = $conn->prepare("INSERT INTO user (Name, email, password, Token, Identifier, Created, ip) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("sssssss", $loginUser, $loginEmail, $hash, $hashToken, $Identifier , $date, $loginIp);
   $stmt->execute();
   echo "creating user";
 
-  $sql2 = "SELECT id, name, Token FROM user WHERE name = ?";
+  $sql2 = "SELECT id, name, Token, Identifier FROM user WHERE name = ?";
 
   $statement2 = $conn->prepare($sql2);
 
@@ -71,6 +72,14 @@ else {
 
   $statement2->execute();
   $result2 = $statement2->get_result();
+
+  session_start();
+
+  $sql3 = "SELECT id FROM user WHERE email = $loginEmail";
+  $result3 = $conn->query($sql3);
+
+  $_SESSION['id'] = $result3;
+  $_SESSION['Identifier']   = $Identifier;
   
   $row2 = $result2->fetch_row();
   echo json_encode($row2);

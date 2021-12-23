@@ -39,7 +39,8 @@ $(document).ready(function () {
                     }
 
                     sessionStorage.setItem("id", parse[0]);
-                    sessionStorage.setItem("user", parse[1])
+                    sessionStorage.setItem("user", parse[1]);
+                    sessionStorage.setItem("Identifier", parse[3]);
 
                     if (data.includes("Login Succes")) {
                         location.href = "/Social/html/Main";

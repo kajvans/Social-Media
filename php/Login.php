@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
     if(password_verify($loginPass, $row["password"])){
 		echo "Login Succes";
 
-		$sql2 = "SELECT id, name, Token FROM user WHERE name = ?";
+		$sql2 = "SELECT id, name, Token, Identifier FROM user WHERE name = ?";
 
 		$statement2 = $conn->prepare($sql2);
 	
@@ -51,6 +51,17 @@ if ($result->num_rows > 0) {
 		$stmtip = $conn->prepare("UPDATE user SET ip=? WHERE name=?");
 		$stmtip->bind_param('ss', $loginip, $loginUser);
 		$stmtip->execute();
+
+		session_start();
+
+		$sql3 = "SELECT Identifier FROM user WHERE name = $loginUser";
+		$result3 = $conn->query($sql3);
+
+		$sql4 = "SELECT id FROM user WHERE name = $loginUser";
+		$result4 = $conn->query($sql4);
+
+		$_SESSION['id'] = $result4;
+		$_SESSION['Identifier']   = $result3;
 	}
 
 	else{
@@ -72,7 +83,7 @@ if ($result->num_rows > 0) {
 		  if(password_verify($loginPass, $row["password"])){
 			echo "Login Succes";
 
-			$sql2 = "SELECT id, name Token FROM user WHERE name = ?";
+			$sql2 = "SELECT id, name, Token, Identifier FROM user WHERE name = ?";
 
 			$statement2 = $conn->prepare($sql2);
 		
@@ -87,6 +98,17 @@ if ($result->num_rows > 0) {
 			$stmtip2 = $conn->prepare("UPDATE user SET ip=? WHERE email=?");
 			$stmtip2->bind_param('ss', $loginip, $loginUser);
 			$stmtip2->execute();
+
+			session_start();
+
+			$sql3 = "SELECT Identifier FROM user WHERE name = $loginUser";
+			$result3 = $conn->query($sql3);
+
+			$sql4 = "SELECT id FROM user WHERE name = $loginUser";
+			$result4 = $conn->query($sql4);
+
+			$_SESSION['id'] = $result4;
+			$_SESSION['Identifier']   = $result3;
 		  }
 	  
 		  else{
