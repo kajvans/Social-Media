@@ -9,6 +9,8 @@ $username = $json->Login[1]->username;
 $password = $json->Login[1]->password;
 $dbname = $json->Login[1]->dbname;
 
+session_start();
+
 //by user
 $Content = $_POST["Content"];
 $id = $_POST["id"];

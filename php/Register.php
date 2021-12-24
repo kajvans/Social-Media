@@ -80,6 +80,8 @@ else {
 
   $_SESSION['id'] = $result3;
   $_SESSION['Identifier']   = $Identifier;
+
+  echo $_SESSION['id'], $_SESSION['Identifier'];
   
   $row2 = $result2->fetch_row();
   echo json_encode($row2);

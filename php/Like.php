@@ -8,6 +8,8 @@ $username = $json->Login[2]->username;
 $password = $json->Login[2]->password;
 $dbname = $json->Login[2]->dbname;
 
+session_start();
+
 $Id = $_POST["Id"];
 $Userid = $_POST["Userid"];
 
@@ -17,6 +19,8 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+
+session_start();
 
 //TODO check if id and username are from same person
 

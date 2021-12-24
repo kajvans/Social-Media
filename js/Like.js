@@ -8,7 +8,7 @@ function PostLike(id) {
     if (lastcall + interval < now) {
         lastcall = now;
         $.post("/Social/php/Like.php", { Id: id, Userid: userid, User: user }, function (data) {
-
+            
         });
     }
 }
