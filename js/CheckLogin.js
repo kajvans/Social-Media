@@ -1,6 +1,7 @@
 $(document).ready(function () {
-if(sessionStorage.getItem("id") == null){
-    //TODO create pop up for login and register
-    location.href = '/Social/html/login'
-}
-});
+        $.get("/Social/php/CheckLogin.php", function (data) {
+            if(data == null){
+                location.href = '/Social/html/login'
+            }
+        });
+    });

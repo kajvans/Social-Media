@@ -33,7 +33,8 @@ $result = $statement->get_result();
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     echo "Login Succes";
-    $sql2 = "SELECT id, name FROM user WHERE Token = ?";
+    session_start();
+    $sql2 = "SELECT id, Identifier FROM user WHERE Token = ?";
 
     $statement2 = $conn->prepare($sql2);
 
@@ -43,7 +44,9 @@ if ($result->num_rows > 0) {
     $result2 = $statement2->get_result();
     
     $row = $result2->fetch_row();
-    echo json_encode($row);
+    $_SESSION['id'] = $row2[0];
+    $_SESSION['Identifier'] = $row2[1];
+    //echo json_encode($row);
 
     $stmtip = $conn->prepare("UPDATE user SET ip=? WHERE Token=?");
 		$stmtip->bind_param('ss', $loginip, $Token);
@@ -51,7 +54,7 @@ if ($result->num_rows > 0) {
 
   }
 } else {
-    echo "not exist";
+    echo "Error";
 }
 
 

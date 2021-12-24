@@ -34,11 +34,10 @@ $result = $statement->get_result();
 if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     if(password_verify($loginPass, $row["password"])){
-		echo "Login Succes";
 
 		session_start();
 
-		$sql2 = "SELECT id, name, Token, Identifier FROM user WHERE name = ?";
+		$sql2 = "SELECT id, Token, Identifier FROM user WHERE name = ?";
 
 		$statement2 = $conn->prepare($sql2);
 	
@@ -50,7 +49,7 @@ if ($result->num_rows > 0) {
 		$row2 = $result2->fetch_row();
 
 		$_SESSION['id'] = $row2[0];
-		$_SESSION['Identifier'] = $row2[3];
+		$_SESSION['Identifier'] = $row2[2];
 
 		echo json_encode($row2);
 
@@ -79,18 +78,9 @@ if ($result->num_rows > 0) {
 
 			session_start();
 
-			$sql3 = "SELECT Identifier FROM user WHERE name = $loginUser";
-			$result3 = $conn->query($sql3);
-
-			$sql4 = "SELECT id FROM user WHERE name = $loginUser";
-			$result4 = $conn->query($sql4);
-
-			$_SESSION['id'] = $result4;
-			$_SESSION['Identifier']   = $result3;
-
 			echo "Login Succes";
 
-			$sql2 = "SELECT id, name, Token, Identifier FROM user WHERE name = ?";
+			$sql2 = "SELECT id, Token, Identifier FROM user WHERE name = ?";
 
 			$statement2 = $conn->prepare($sql2);
 		
@@ -100,6 +90,9 @@ if ($result->num_rows > 0) {
 			$result2 = $statement2->get_result();
 			
 			$row2 = $result2->fetch_row();
+
+			$_SESSION['id'] = $row2[0];
+			$_SESSION['Identifier'] = $row2[2];
 			echo json_encode($row2);
 
 			$stmtip2 = $conn->prepare("UPDATE user SET ip=? WHERE email=?");
@@ -110,13 +103,13 @@ if ($result->num_rows > 0) {
 		  }
 	  
 		  else{
-			  echo "wrong password";
+			  echo "Error";
 		  }
 		}
 	}
 
 	else{
-		echo "username does not exist";
+		echo "Error";
 	}
 }
 
