@@ -7,7 +7,7 @@ $(document).ready(function () {
                 var pass = $("#pwdInput").val();
 
                 $.post("/Social/php/Register.php", { loginUser: name, loginEmail: mail, loginPass: pass, loginIp: data1.ip }, function (data) {
-                    if(data != "username is taken" || data != "email is taken"){
+                    if (data != "username is taken" || data != "email is taken") {
                         parse = JSON.parse(data);
 
                         if (data.includes("creating user") && document.getElementById('Remember').checked) {
@@ -15,15 +15,15 @@ $(document).ready(function () {
                                 var token = parse[2];
                                 localStorage.setItem('CurrentUser', token);
                             }
-    
+
                             else {
                                 localStorage.removeItem("CurrentUser");
                                 var token = parse[1];
                                 localStorage.setItem('CurrentUser', token);
-    
+
                             }
                         }
-    
+
                         if (data.includes("creating user")) {
                             location.href = "/Social/html/Main";
                         }

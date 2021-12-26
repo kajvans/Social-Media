@@ -13,7 +13,7 @@ session_start();
 
 //by user
 $Content = $_POST["Content"];
-$id = $_POST["id"];
+$id = $_SESSION['id'];
 
 //create Connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -26,7 +26,6 @@ if($conn->connect_error) {
 $stmt = $conn->prepare("INSERT INTO post (user_id, content) VALUES (?, ?)");
 $stmt->bind_param("is", $_SESSION['id'] , $Content);
 $stmt->execute();
-
 $conn->close();
 
 ?>

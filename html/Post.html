@@ -4,44 +4,17 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/Social/js/Post.js"></script>
-    <script src="/Social/js/GetPost.js"></script>
-    <script src="/Social/js/Like.js"></script>
-    <script src="/Social/js/Dislike.js"></script>
-    <script src="/Social/js/Comment.js"></script>
     <script src="/Social/js/Search.js"></script>
-    <script src="/Social/js/GetProfile.js"></script>
     <script src="/Social/js/CheckLogin.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
-
-    <!-- Creating single javascript file with all the functions 
-    that are now split in multiple files -->
-
-    <script>
-        function Like(id) {
-            PostLike(id);
-        }
-
-        function Dislike(id) {
-            PostDislike(id);
-        }
-
-        function BeginComment(id) {
-            PostComment(id, "Comment");
-            //TODO creating option to set text for comments with an popup
-        }
-
-        function ShowProfilePage(id) {
-            GetProfile(id);
-            //TODO make it possible to go back to main
-        }
-    </script>
+    
 </head>
 
 <body>
 
     <div id="TopOverlay" class="center">
         <div id="TopDisplay">
-            <h3>Home</h3>
+            <h3>Post</h3>
         </div>
     </div>
 
@@ -76,8 +49,6 @@
             <input type="text" id="content" name="content" required><br><br>
             <input type="button" id="Submit" value="Post">
         </div>
-        <hr>
-        <div id="Posts"></div>
     </div>
 </body>
 

@@ -11,7 +11,6 @@ $dbname = $json->Login[2]->dbname;
 session_start();
 
 $Id = $_POST["Id"];
-$User = $_POST["User"];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

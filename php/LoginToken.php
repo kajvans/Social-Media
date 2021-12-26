@@ -44,8 +44,8 @@ if ($result->num_rows > 0) {
     $result2 = $statement2->get_result();
     
     $row = $result2->fetch_row();
-    $_SESSION['id'] = $row2[0];
-    $_SESSION['Identifier'] = $row2[1];
+    $_SESSION['id'] = $row[0];
+    $_SESSION['Identifier'] = $row[1];
     //echo json_encode($row);
 
     $stmtip = $conn->prepare("UPDATE user SET ip=? WHERE Token=?");

@@ -13,7 +13,7 @@ session_start();
 
 //by user
 $Content = $_POST["Content"];
-$id = $_POST["id"];
+$id = $_SESSION['id'];
 $Postid = $_POST["Postid"];
 
 //create Connection

@@ -21,21 +21,21 @@ function GetProfile(id) {
                 Date = Math.floor(Date / 60);
                 if (Date >= 24) {
                     Date = Math.floor(Date / 24)
-                    info.innerHTML += `&nbsp; ${Date} days ago</span> <br><br>`
+                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
                 }
 
                 else {
-                    info.innerHTML += `&nbsp; ${Date} hours ago</span> <br><br>`
+                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
                 }
             }
 
             else {
                 if (Date < 1) {
-                    info.innerHTML += `&nbsp; less than a minutes ago</span> <br><br>`
+                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
                 }
 
                 else {
-                    info.innerHTML += `&nbsp; ${Date} minutes ago</span> <br><br>`
+                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
                 }
             }
 

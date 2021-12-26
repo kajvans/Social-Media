@@ -11,7 +11,7 @@ $(document).ready(function () {
                     for (let i = 0; i < data.length; i++) {
                         let Main = document.createElement("li");
                         Main.id = "SearchHit" + (i + 1);
-                        Main.innerHTML = `<button id='NameDisplay' onclick='ShowProfilePage(${data[i].name})'> ${data[i].name} </button>`;
+                        Main.innerHTML = `<button id='NameDisplay' onclick='ShowProfilePage(${data[i].id})'> ${data[i].name} </button>`;
                         document.getElementById("SearchResults").appendChild(Main);
                     }
                 }
