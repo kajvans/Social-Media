@@ -3,9 +3,10 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="/Social/js/CheckLogin.js"></script>
     <script src="/Social/js/Post.js"></script>
     <script src="/Social/js/Search.js"></script>
+    <script src="/Social/js/CheckLogin.js"></script>
+    <script src="/Social/js/GetSettings.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
     
 </head>
@@ -32,7 +33,7 @@
             <button id="Home" onclick="window.location.href='Main';">
                 <h1>Home</h1>
             </button>
-            <button id="Profile">
+            <button id="Profile" onclick="window.location.href='Profile';">
                 <h1>Profile</h1>
             </button>
             <button id="Settings" onclick="window.location.href='Settings';">
@@ -43,7 +44,7 @@
             </button>
         </div>
     </div>
-    
+
     <div id="Postarea" class="center">
         <div id="create post">
             <label for="content">content</label><br>

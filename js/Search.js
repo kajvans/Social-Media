@@ -4,14 +4,14 @@ $(document).ready(function () {
 
         if (content != "") {
             $.post("/Social/php/Search.php", { Searchuser: content }, function (data) {
-
                 document.getElementById("SearchResults").innerHTML = '';
                 if (data != "") {
                     data = JSON.parse(data);
                     for (let i = 0; i < data.length; i++) {
                         let Main = document.createElement("li");
-                        Main.id = "SearchHit" + (i + 1);
-                        Main.innerHTML = `<button id='NameDisplay' onclick='ShowProfilePage(${data[i].id})'> ${data[i].name} </button>`;
+                        Main.id = "SearchHit";
+                        Main.innerHTML = `<button id='NameDisplay'> ${data[i].name} </button>`;
+                        Main.onclick = function () {window.location.href=`Profile?${data[i].name}`}
                         document.getElementById("SearchResults").appendChild(Main);
                     }
                 }

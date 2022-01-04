@@ -15,7 +15,8 @@ $(document).ready(function () {
             info.id = "Post Info " + i;
             document.getElementById("post " + data[i].id).appendChild(info);
 
-            info.innerHTML = `<button class='SameLine' id='NameDisplay' onclick="ShowProfilePage(${data[i].user})">${data[i].name}</button>`
+            info.innerHTML = `<button class='SameLine' id='NameDisplay'">${data[i].name}</button>`
+            info.onclick = function () {window.location.href=`Profile?${data[i].name}`}
 
             if (Date >= 60) {
                 Date = Math.floor(Date / 60);
@@ -41,8 +42,12 @@ $(document).ready(function () {
 
             let content = document.createElement("div");
             content.id = "Content " + i;
-            content.innerHTML = `<p id="Header" style="text-align: left; font-size: 110%; font-weight: 110%;">${data[i].content}</p>`
             document.getElementById("post " + data[i].id).appendChild(content);
+            let text = document.createElement("p");
+            text.id = "Header";
+            text.style = "text-align: left; font-size: 110%; font-weight: 110%;";
+            text.innerText = `${data[i].content}`;
+            document.getElementById("Content " + i).appendChild(text);
 
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;

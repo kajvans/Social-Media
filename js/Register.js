@@ -12,7 +12,7 @@ $(document).ready(function () {
 
                         if (data.includes("creating user") && document.getElementById('Remember').checked) {
                             if (localStorage.getItem("CurrentUser" === null)) {
-                                var token = parse[2];
+                                var token = parse[1];
                                 localStorage.setItem('CurrentUser', token);
                             }
 
@@ -32,6 +32,8 @@ $(document).ready(function () {
                     else {
                         console.log(data)
                     }
+
+                    sessionStorage.setItem("Name", name)
                 })
             });
     });

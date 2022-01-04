@@ -6,6 +6,7 @@ $(document).ready(function () {
                 var Upload = Token;
                 $.post("/Social/php/LoginToken.php", { Token: Upload, loginip: data1.ip }, function (data) {
                     if (data != "Error") {
+                        sessionStorage.setItem("Name", data.slice(1,-1))
                         location.href = "/Social/html/Main";
                     }
                 });
@@ -33,7 +34,7 @@ $(document).ready(function () {
                                 localStorage.setItem('CurrentUser', token);
                             }
                         }
-                        console.log("yesy");
+                        sessionStorage.setItem("Name", parse[3])
                         location.href = "/Social/html/Main";
                     }
 

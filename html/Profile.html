@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/Social/js/CheckLogin.js"></script>
+    <script src="/Social/js/Search.js"></script>
+    <script src="/Social/js/GetProfile.js"></script>
+    <script src="/Social/js/Like.js"></script>
+    <script src="/Social/js/Dislike.js"></script>
+    <script src="/Social/js/Comment.js"></script>
+    <link rel="stylesheet" href="/Social/css/Main.css">
+
+    <script>
+        function Like(id) {
+            PostLike(id);
+        }
+
+        function Dislike(id) {
+            PostDislike(id);
+        }
+
+        function BeginComment(id) {
+            PostComment(id, "Comment");
+            //TODO creating option to set text for comments with an popup
+        }
+    </script>
+    
+</head>
+
+<body>
+
+    <div id="Top" class="center">
+        <div id="UserInfo">
+            <h3 id="UserName"></h3>
+            <h3 id="Joined">11 december 2021</h3>
+            <span id="Follow"><pre>Following 3    2 Followers</pre></span>
+        </div>
+        <Div id="UserNavigation" style="padding-top: 2%;">
+            <button>
+                <h2>Posts</h2>
+            </button>
+            <button>
+                <h2>Comments</h2>
+            </button>
+            <button>
+                <h2>Likes</h2>
+            </button>
+            <button>
+                <h2>Dislikes</h2>
+            </button>
+        </Div>
+        <hr>
+    </div>
+
+    <div id="Rightside" class="RightDiv">
+
+        <div id="SearchInput">
+            <input type="text" id="UserSearchBar" placeholder="Type to search user">
+            <div class="autocom-box" id="SearchResults">
+            </div>
+        </div>
+    </div>
+
+    <div id="Leftside" class="LeftDiv">
+        <div id="Navigation" class="Grid">
+            <button id="Home" onclick="window.location.href='Main';">
+                <h1>Home</h1>
+            </button>
+            <button id="Profile">
+                <h1>Profile</h1>
+            </button>
+            <button id="Settings" onclick="window.location.href='Settings';">
+                <h1>Settings</h1>
+            </button>
+            <button id="Post" onclick="window.location.href='Post';"> 
+                <h1>Post</h1>
+            </button>
+        </div>
+    </div>
+
+    <div id="UserArea" class="center" style="padding-top: 0%;">
+        <div id="About">
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec.
+            </p>
+            <hr>
+        </div>
+        <div id="Posts">
+
+        </div>
+    </div>
+</body>
+
+</html>

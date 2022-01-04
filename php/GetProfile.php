@@ -11,15 +11,23 @@ $dbname = $json->Login[0]->dbname;
 
 $User = $_POST["User"];
 
+session_start();
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-$sql = "SELECT user.name, user.id AS user, user.about, user.created, post.id, post.content, post.likes, post.dislikes, post.comments, 
+$getid = "SELECT id FROM user WHERE name = '$User'";
+
+$id = mysqli_query($conn, $getid);
+$id = mysqli_fetch_assoc($id);
+$id = $id['id'];
+
+$sql = "SELECT user.name, user.id AS user, user.about, user.created AS joined, post.id, post.content, post.likes, post.dislikes, post.comments, 
 FLOOR(TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP, post.created)) / 60)  AS created
-FROM user INNER JOIN post ON post.user_id = $User WHERE user.id = $User
+FROM user INNER JOIN post ON post.user_id = $id WHERE user.id = $id
 ORDER BY post.created DESC LIMIT 100";
 
 $result = $conn->query($sql);

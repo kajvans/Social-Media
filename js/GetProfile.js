@@ -1,8 +1,13 @@
-function GetProfile(id) {
-    $.post("/Social/php/GetProfile.php", { User: id }, function (data) {
+$(document).ready(function () {
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    $.post("/Social/php/GetProfile.php", { User: location.search.substring(1) }, function (data) {
+        console.log(data);
         //TODO create new html file for the profile page
         document.getElementById("Posts").innerHTML = "";
         data = JSON.parse(data);
+        document.getElementById("UserName").innerText = `${data[0].name}`
+        var date = data[0].joined.split("-");
+        document.getElementById("Joined").innerText = `${date[2]} ${months[date[1] - 1]} ${date[0]}`
         for (let i = 0; i < data.length; i++) {
             var Date = data[i].created;
 
@@ -14,8 +19,9 @@ function GetProfile(id) {
             info.id = "Post Info " + i;
             document.getElementById("post " + data[i].id).appendChild(info);
 
-            info.innerHTML = `<button class='SameLine' id='NameDisplay' onclick='ShowProfilePage(${data[i].user})'>${data[i].name}</button> 
-            <span class='SameLine' id='TimePassed'>`
+            info.innerHTML = `<button class='SameLine' id='NameDisplay'">${data[i].name}</button>`
+            info.onclick = function () {window.location.href=`Profile?${data[i].name}`}
+
 
             if (Date >= 60) {
                 Date = Math.floor(Date / 60);
@@ -41,16 +47,20 @@ function GetProfile(id) {
 
             let content = document.createElement("div");
             content.id = "Content " + i;
-            content.innerHTML = `<p id="Header" style="text-align: left; font-size: 110%; font-weight: 110%;">${data[i].content}</p>`
             document.getElementById("post " + data[i].id).appendChild(content);
+            let text = document.createElement("p");
+            text.id = "Header";
+            text.style = "text-align: left; font-size: 110%; font-weight: 110%;";
+            text.innerText = `${data[i].content}`;
+            document.getElementById("Content " + i).appendChild(text);
 
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
             buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="Like(${data[i].id})">
-            <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
-            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
-            <hr>`
+                <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
+                <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
+                <hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }
     });
-}
+});

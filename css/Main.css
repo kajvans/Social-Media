@@ -1,17 +1,19 @@
-#TimePassed, #NameDisplay, p, label, h3 {
+#TimePassed, #NameDisplay, p, pre, label, h3 {
     color: white;
 }
 
-p {
+p, pre {
     margin-top: 1%;
     margin-bottom: 1%;
+    font-size: 110%;
 }
 
 .RightDiv {
     position: fixed;
     margin: 0;
     top: 3%;
-    left: 20%;
+    right: 20%;
+
 }
 
 .Grid{
@@ -24,16 +26,16 @@ p {
     position: fixed;
     margin: 0;
     top: 3%;
-    right: 20%;
+    left: 20%;
 }
 
 body {
     background-color: #191919;
 }
 
-#TopOverlay {
+/* #TopOverlay {
     position: fixed;
-}
+} */
 
 #Postarea {
     padding-top: 3%;

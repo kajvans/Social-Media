@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 
 		session_start();
 
-		$sql2 = "SELECT id, Token, Identifier FROM user WHERE name = ?";
+		$sql2 = "SELECT id, Token, Identifier, name FROM user WHERE name = ?";
 
 		$statement2 = $conn->prepare($sql2);
 	
@@ -50,6 +50,7 @@ if ($result->num_rows > 0) {
 
 		$_SESSION['id'] = $row2[0];
 		$_SESSION['Identifier'] = $row2[2];
+		$_SESSION['User'] = $row2[3];
 
 		echo json_encode($row2);
 
@@ -80,7 +81,7 @@ if ($result->num_rows > 0) {
 
 			echo "Login Succes";
 
-			$sql2 = "SELECT id, Token, Identifier FROM user WHERE name = ?";
+			$sql2 = "SELECT id, Token, Identifier, name FROM user WHERE name = ?";
 
 			$statement2 = $conn->prepare($sql2);
 		

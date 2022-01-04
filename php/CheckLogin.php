@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 
 session_start();
 
-if($_SESSION['id'] == null){
+if( !isset($_SESSION['id'])){
     echo "Error";
 }
 
