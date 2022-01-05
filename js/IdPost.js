@@ -1,18 +1,15 @@
 $(document).ready(function () {
-    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    $.post("/Social/php/GetProfile.php", { User: location.search.substring(1) }, function (data) {
-        document.getElementById("Posts").innerHTML = "";
+    var Query = location.search.substring(2).split("/");
+    $.post("/Social/php/IdPost.php", {Id: Query[1]}, function (data) {
         data = JSON.parse(data);
-        document.getElementById("UserName").innerText = `${data[0].name}`
-        var date = data[0].joined.split("-");
-        document.getElementById("Joined").innerText = `${date[2]} ${months[date[1] - 1]} ${date[0]}`
+        
         for (let i = 0; i < data.length; i++) {
             var Date = data[i].created;
-
+            
             let Button = document.createElement("button");
             Button.id = "But " + data[i].id;
             Button.className = "PostButton";
-            document.getElementById("Posts").appendChild(Button);
+            document.getElementById("SeePost").appendChild(Button);
 
             let Main = document.createElement("div");
             Main.id = "post " + data[i].id;
@@ -25,7 +22,6 @@ $(document).ready(function () {
             info.innerHTML = `<button class='SameLine' id='NameDisplay'">${data[i].name}</button>`
             info.onclick = function () {window.location.href=`Profile?${data[i].name}`}
 
-
             if (Date >= 60) {
                 Date = Math.floor(Date / 60);
                 if (Date >= 24) {
@@ -34,17 +30,17 @@ $(document).ready(function () {
                 }
 
                 else {
-                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
+                    info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} hours ago</span> <br><br>`
                 }
             }
 
             else {
                 if (Date < 1) {
-                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
+                    info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; less than a minutes ago</span> <br><br>`
                 }
 
                 else {
-                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
+                    info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minutes ago</span> <br><br>`
                 }
             }
 
@@ -60,11 +56,10 @@ $(document).ready(function () {
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
             buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="Like(${data[i].id})">
-                <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
-                <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
-                <hr>`
+            <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
+            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
+            <hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }
-
     });
 });

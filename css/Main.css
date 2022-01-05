@@ -37,10 +37,6 @@ body {
     position: fixed;
 } */
 
-#Postarea {
-    padding-top: 3%;
-}
-
 .center {
     display: block;
     margin-left: 34%;
@@ -76,4 +72,14 @@ body {
 #NameDisplay:hover {
     background-color: lightseagreen;
     border-radius: 10px;
+}
+
+.PostButton{
+    background-color: #191919;
+    border: transparent;
+}
+
+.PostButton:hover{
+    background-color: #292929;
+    border: transparent;
 }

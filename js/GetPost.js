@@ -1,15 +1,20 @@
 $(document).ready(function () {
     var data = [];
     $.get("/Social/php/GetPost.php", function (data) {
-        //location.reload();
         data = JSON.parse(data);
 
         for (let i = 0; i < data.length; i++) {
             var Date = data[i].created;
 
+            let Button = document.createElement("button");
+            Button.id = "But " + data[i].id;
+            Button.className = "PostButton";
+            Button.onclick = function () {window.location.href=`Post?/${data[i].name}/${data[i].id}`}
+            document.getElementById("Posts").appendChild(Button);
+
             let Main = document.createElement("div");
             Main.id = "post " + data[i].id;
-            document.getElementById("Posts").appendChild(Main);
+            document.getElementById(`But ${data[i].id}`).appendChild(Main);
 
             let info = document.createElement("div");
             info.id = "Post Info " + i;

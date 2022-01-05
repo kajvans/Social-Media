@@ -31,7 +31,6 @@
 
         function ShowProfilePage(id) {
             GetProfile(id);
-            //TODO make it possible to go back to main
         }
     </script>
 </head>
@@ -64,7 +63,7 @@
             <button id="Settings" onclick="window.location.href='Settings';">
                 <h1>Settings</h1>
             </button>
-            <button id="Post" onclick="window.location.href='Post';"> 
+            <button id="Post" onclick="window.location.href='CreatePost';"> 
                 <h1>Post</h1>
             </button>
         </div>
@@ -77,7 +76,7 @@
             <input type="button" id="Submit" value="Post">
         </div>
         <hr>
-        <div id="Posts"></div>
+        <div id="Posts" class="Grid"></div>
     </div>
 </body>
 

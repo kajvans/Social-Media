@@ -4,7 +4,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/Social/js/CheckLogin.js"></script>
-    <script src="/Social/js/IdPost.js"></script>
+    <script src="/Social/js/Post.js"></script>
     <script src="/Social/js/Search.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
     
@@ -45,7 +45,11 @@
     </div>
     
     <div id="Postarea" class="center">
-        <div id="SeePost" class="Grid"></div>
+        <div id="create post">
+            <label for="content">content</label><br>
+            <input type="text" id="content" name="content" required><br><br>
+            <input type="button" id="Submit" value="Post">
+        </div>
     </div>
 </body>
 
