@@ -28,19 +28,13 @@ $(document).ready(function () {
                 if (Date >= 24) {
                     Date = Math.floor(Date / 24)
                     info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
-                }
-
-                else {
+                } else {
                     info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} hours ago</span> <br><br>`
                 }
-            }
-
-            else {
+            } else {
                 if (Date < 1) {
                     info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; less than a minutes ago</span> <br><br>`
-                }
-
-                else {
+                } else {
                     info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minutes ago</span> <br><br>`
                 }
             }
