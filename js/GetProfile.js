@@ -2,10 +2,21 @@ $(document).ready(function () {
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     $.post("/Social/php/GetProfile.php", { User: location.search.substring(1) }, function (data) {
         console.log(data)
-        var data = data.split("/");
+        var data = data.split("/~/~");
         var User = JSON.parse(data[0]);
-        var Friends = JSON.parse(data[1]);
+        console.log(data[0]);
+        console.log(data[1]);
+        console.log(data[2]);
+        console.log(data[3]);
+        if(data[1] != 'null'){
+            console.log(data[1]);
+            var Follows = JSON.parse(data[1]);
+        }
         var Post = JSON.parse(data[2]);
+        if(data[3] != 'null'){
+            var Followers = JSON.parse(data[3]);
+        }
+
         document.getElementById("Posts").innerHTML = "";
         console.log(data);
 

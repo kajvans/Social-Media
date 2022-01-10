@@ -45,27 +45,35 @@ if ($result->num_rows > 0) {
 	$row4 = array();
 	while($row = $result->fetch_assoc()){
 		$rows[] = $row;
+		echo json_encode($rows);
+		echo "/~/~";
 	}
-	while($row2 = $result2->fetch_assoc()){
-		$rows2[] = $row2;
-	}
-	if ($result3->num_rows > 0) {
-		while($row3 = $result3->fetch_assoc()){
-			$rows3[] = $row3;
+	if($result2->num_rows > 0){
+		while($row2 = $result2->fetch_assoc()){
+			$rows2[] = $row2;
+			echo json_encode($rows2);
+			echo "/~/~";
 		}
+	}
+	else {
+		echo json_encode(`[{"Friends":"null"}]`);
+		echo "/~/~";
+	}
+	while($row3 = $result3->fetch_assoc()){
+		$rows3[] = $row3;
+		echo json_encode($rows3);
+		echo "/~/~";
 	}
 	if ($result4->num_rows > 0) {
 		while($row4 = $result4->fetch_assoc()){
 			$rows4[] = $row4;
+			echo json_encode($rows4);
 		}
 	}
-	echo json_encode($rows);
-	echo "/";
-	echo json_encode($rows2);
-	echo "/";
-	echo json_encode($rows3);
-	echo "/";
-	echo json_encode($rows4);
+
+	else {
+		echo json_encode(`[{"Friends":"null"}]`);
+	}
 } else {
   echo "Error";
 }

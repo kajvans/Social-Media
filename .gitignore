@@ -1,1 +1,4 @@
 php/ConnectionInfo.json
+Go/go.mod
+Go/go.sum
+Go/main.go

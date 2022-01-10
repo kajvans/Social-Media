@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     $("#Submit").click(function () {
         $.getJSON("https://api.ipify.org?format=json",
-            function (data1) {
+            function (data1) {       
                 var name = $("#UserNameInput").val();
                 var pass = $("#pwdInput").val();
                 $.post("/Social/php/Login.php", { loginUser: name, loginPass: pass, loginip: data1.ip }, function (data) {

@@ -6,10 +6,10 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
             var Date = data[i].created;
 
-            let Button = document.createElement("button");
+            let Button = document.createElement("div");
             Button.id = "But " + data[i].id;
             Button.className = "PostButton";
-            Button.onclick = function () {window.location.href=`Post?/${data[i].name}/${data[i].id}`}
+            Button.onclick = function (){event.stopPropagation(window.location.href=`Post?/${data[i].name}/${data[i].id}`)}
             document.getElementById("Posts").appendChild(Button);
 
             let Main = document.createElement("div");
@@ -20,8 +20,7 @@ $(document).ready(function () {
             info.id = "Post Info " + i;
             document.getElementById("post " + data[i].id).appendChild(info);
 
-            info.innerHTML = `<button class='SameLine' id='NameDisplay'">${data[i].name}</button>`
-            info.onclick = function () {window.location.href=`Profile?${data[i].name}`}
+            info.innerHTML = `<button class='SameLine' id='NameDisplay' onclick="event.stopPropagation(window.location.href='Profile?${data[i].name}')">${data[i].name}</button>`
 
             if (Date >= 60) {
                 Date = Math.floor(Date / 60);
@@ -50,9 +49,9 @@ $(document).ready(function () {
 
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
-            buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="Like(${data[i].id})">
-            <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
-            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
+            buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="event.stopPropagation(Like(${data[i].id}))">
+            <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="event.stopPropagation(Dislike(${data[i].id}))">
+            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="event.stopPropagation(BeginComment(${data[i].id}))">
             <hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }
