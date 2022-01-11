@@ -4,10 +4,6 @@ $(document).ready(function () {
         console.log(data)
         var data = data.split("/~/~");
         var User = JSON.parse(data[0]);
-        console.log(data[0]);
-        console.log(data[1]);
-        console.log(data[2]);
-        console.log(data[3]);
         if(data[1] != 'null'){
             console.log(data[1]);
             var Follows = JSON.parse(data[1]);
@@ -81,10 +77,10 @@ $(document).ready(function () {
 
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
-            buttons.innerHTML = `<input type="button" id="Likes" value="${Post[i].likes} likes" onclick="Like(${Post[i].id})">
-                <input type="button" id="Dislike" value="${Post[i].dislikes} dislikes" onclick="Dislike(${Post[i].id})">
-                <input type="button" id="Comment" value="${Post[i].comments} comments" onclick="BeginComment(${Post[i].id})">
-                <hr>`
+            buttons.innerHTML = `<input type="button" id="Likes ${Post[i].id}" value="${Post[i].likes} likes" onclick="event.stopPropagation(Like(${Post[i].id}))">
+            <input type="button" id="Dislike ${Post[i].id}" value="${Post[i].dislikes} dislikes" onclick="event.stopPropagation(Dislike(${Post[i].id}))">
+            <input type="button" id="Comment ${Post[i].id}" value="${Post[i].comments} comments" onclick="event.stopPropagation(BeginComment(${Post[i].id}))">
+            <hr>`
             document.getElementById("post " + Post[i].id).appendChild(buttons);
         }
 

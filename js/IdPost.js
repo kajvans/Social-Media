@@ -55,9 +55,9 @@ $(document).ready(function () {
 
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
-            buttons.innerHTML = `<input type="button" id="Likes" value="${data[i].likes} likes" onclick="Like(${data[i].id})">
-            <input type="button" id="Dislike" value="${data[i].dislikes} dislikes" onclick="Dislike(${data[i].id})">
-            <input type="button" id="Comment" value="${data[i].comments} comments" onclick="BeginComment(${data[i].id})">
+            buttons.innerHTML = `<input type="button" id="Likes ${data[i].id}" value="${data[i].likes} likes" onclick="event.stopPropagation(Like(${data[i].id}))">
+            <input type="button" id="Dislike ${data[i].id}" value="${data[i].dislikes} dislikes" onclick="event.stopPropagation(Dislike(${data[i].id}))">
+            <input type="button" id="Comment ${data[i].id}" value="${data[i].comments} comments" onclick="event.stopPropagation(BeginComment(${data[i].id}))">
             <hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }

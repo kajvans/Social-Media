@@ -23,10 +23,6 @@ $(document).ready(function () {
 
                             }
                         }
-
-                        if (data.includes("creating user")) {
-                            location.href = "/Social/html/Main";
-                        }
                     }
 
                     else {
@@ -35,6 +31,8 @@ $(document).ready(function () {
 
                     sessionStorage.setItem("Name", name)
                 })
+
+                location.href = "/Social/html/Main";
             });
     });
 });
