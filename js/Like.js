@@ -9,17 +9,27 @@ function PostLike(id) {
         lastcall = now;
         $.post("/Social/php/Like.php", { Id: id, Userid: userid, User: user }, function (data) {
                 let Likes = document.getElementById(`Likes ${id}`);
+                let Dislikes = document.getElementById(`Dislike ${id}`);
                 var Count = Likes.value.split(" ");
+                var CountDis = Dislikes.value.split(" ");
                 if(data == "1"){
                     Count[0] = parseInt(Count[0]) + 1;
-                    console.log(Count[0]);
                     Likes.value = null;
                     Likes.value = Count[0] + ' likes';
                 }
 
                 else if(data == "2") {
+                    Count[0] = parseInt(Count[0]) + 1;
+                    Likes.value = null;
+                    Likes.value = Count[0] + ' likes';
+
+                    CountDis[0] = parseInt(CountDis[0]) - 1;
+                    Dislikes.value = null;
+                    Dislikes.value = Count[0] + ' dislikes';
+                }
+
+                else {
                     Count[0] = parseInt(Count[0]) - 1;
-                    console.log(Count[0]);
                     Likes.value = null;
                     Likes.value = Count[0] + ' likes';
                 }

@@ -14,7 +14,6 @@ $(document).ready(function () {
         }
 
         document.getElementById("Posts").innerHTML = "";
-        console.log(data);
 
         document.getElementById("UserName").innerText = `${User[0].name}`
         var date = User[0].joined.split("-");
