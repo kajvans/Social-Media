@@ -10,27 +10,16 @@
     <script src="/Social/js/Dislike.js"></script>
     <script src="/Social/js/Comment.js"></script>
     <script src="/Social/js/Search.js"></script>
+    <script src="/Social/js/DeletePost.js"></script>
     <link rel="stylesheet" href="/Social/css/Main.css">
 
     <!-- Creating single javascript file with all the functions 
     that are now split in multiple files -->
 
     <script>
-        function Like(id) {
-            PostLike(id);
-        }
-
-        function Dislike(id) {
-            PostDislike(id);
-        }
-
         function BeginComment(id) {
             PostComment(id, "Comment");
             //TODO creating option to set text for comments with an popup
-        }
-
-        function ShowProfilePage(id) {
-            GetProfile(id);
         }
     </script>
 </head>

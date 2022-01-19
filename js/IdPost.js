@@ -52,13 +52,17 @@ $(document).ready(function () {
             text.style = "text-align: left; font-size: 110%; font-weight: 110%;";
             text.innerText = `${data[i].content}`;
             document.getElementById("Content " + i).appendChild(text);
-
+        
             let buttons = document.createElement("div");
             buttons.id = "Buttons " + i;
-            buttons.innerHTML = `<input type="button" id="Likes ${data[i].id}" value="${data[i].likes} likes" onclick="event.stopPropagation(Like(${data[i].id}))">
-            <input type="button" id="Dislike ${data[i].id}" value="${data[i].dislikes} dislikes" onclick="event.stopPropagation(Dislike(${data[i].id}))">
-            <input type="button" id="Comment ${data[i].id}" value="${data[i].comments} comments" onclick="event.stopPropagation(BeginComment(${data[i].id}))">
-            <hr>`
+            buttons.innerHTML = `<input type="button" id="Likes ${data[i].id}" value="${data[i].likes} likes" onclick="event.stopPropagation(PostLike(${data[i].id}))">
+            <input type="button" id="Dislike ${data[i].id}" value="${data[i].dislikes} dislikes" onclick="event.stopPropagation(PostDislike(${data[i].id}))">
+            <input type="button" id="Comment ${data[i].id}" value="${data[i].comments} comments" onclick="event.stopPropagation(PostComment(${data[i].id}))">`
+            if(data[i].Owner == 1){
+                buttons.innerHTML += `<input type="button" style="float: right;" id="Delete ${data[i].id}" value="Delete Post" onclick="event.stopPropagation(PostDelete(${data[i].id}))">`
+            }
+        
+            buttons.innerHTML += `<hr>`
             document.getElementById("post " + data[i].id).appendChild(buttons);
         }
     });

@@ -19,8 +19,6 @@ if ($conn->connect_error) {
 
 session_start();
 
-//TODO check if id and username are from same person
-
 $sql2 = "SELECT id FROM likes WHERE Post_id = $Id AND user_id = $_SESSION[id]";
 $statement2 = $conn->prepare($sql2);
 $statement2->execute();
