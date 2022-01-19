@@ -3,6 +3,8 @@
 $str = file_get_contents('ConnectionInfo.json');
 $json = json_decode($str);
 
+session_start();
+
 $servername = $json->Login[2]->servername;
 $username = $json->Login[2]->username;
 $password = $json->Login[2]->password;

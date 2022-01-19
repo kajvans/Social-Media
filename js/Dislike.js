@@ -6,11 +6,13 @@ function PostDislike(id) {
     var user = sessionStorage.getItem("id");
     if (lastcall + interval < now) {
         lastcall = now;
+        console.log(id);
         $.post("/Social/php/Dislike.php", { Id: id, User: user }, function (data) {
             let Dislikes = document.getElementById(`Dislike ${id}`);
             let Likes = document.getElementById(`Likes ${id}`);
             var Count = Dislikes.value.split(" ");
             var CountLik = Likes.value.split(" ");
+            console.log(data);
             if(data == "1"){
                 Count[0] = parseInt(Count[0]) + 1;
                 Dislikes.value = null;
@@ -24,13 +26,13 @@ function PostDislike(id) {
 
                 CountLik[0] = parseInt(CountLik[0]) - 1;
                 Likes.value = null;
-                Likes.value = Count[0] + ' likes';
+                Likes.value = CountLik[0] + ' likes';
             }
 
             else {
                 Count[0] = parseInt(Count[0]) - 1;
-                Likes.value = null;
-                Likes.value = Count[0] + ' likes';
+                Dislikes.value = null;
+                Dislikes.value = Count[0] + ' likes';
             }
         });
     }
