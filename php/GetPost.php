@@ -18,7 +18,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 $sql = "SELECT user.name,user.id AS user, post.id, post.content, post.likes, post.dislikes, post.comments, 
-FLOOR(TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP, post.created)) / 60)  AS created,
+TIMESTAMPDIFF(MINUTE,  post.created ,CURRENT_TIMESTAMP)  AS created,
 CASE WHEN post.user_id = $_SESSION[id] THEN '1' ELSE '0' END AS Owner
 FROM user INNER JOIN post ON post.user_id = user.id ORDER BY post.created DESC LIMIT 100";
 

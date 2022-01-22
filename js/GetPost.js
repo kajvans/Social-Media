@@ -32,40 +32,63 @@ function calculateDate(Date, info){
     if (Date >= 60) {
         Date = Math.floor(Date / 60);
         if (Date >= 24) {
-            Date = Math.floor(Date / 24)
+            Date = Math.floor(Date / 24);
+            console.log(Date);
             if(Date >= 30){
-                Date = Math.floor(Date / 30)
-                if(Date = 1){
+                Date = Math.floor(Date / 30);
+
+                if(Date > 365){
+                    Date = Math.floor(Date / 365);
+                    if(Date < 2){
+                        info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} year ago</span> <br><br>`
+                    }
+
+                    else {
+                        info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} years ago</span> <br><br>`
+                    }
+                }
+
+                else if(Date < 2){
                     info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} month ago</span> <br><br>`
-                } else {
+                }
+    
+                else  {
                     info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} months ago</span> <br><br>`
                 }
             }
-            else if (Date < 30) {
-                if(Date = 1){
-                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} day ago</span> <br><br>`
-                } else {
-                    info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
-                }
-                
-            }
-        } else {
-            if(Date = 1){
-                info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} hour ago</span> <br><br>`
-            } else {
-                info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} hours ago</span> <br><br>`
-            }
-        }
-    } else {
-        if (Date < 1) {
-            info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; less than a minutes ago</span> <br><br>`
-        } else {
-            if(Date = 1){
-                info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minute ago</span> <br><br>`
-            } else {
-                info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minutes ago</span> <br><br>`
+
+            else if(Date < 2){
+                info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} day ago</span> <br><br>`
             }
 
+            else  {
+                info.innerHTML += ` <span class='SameLine' id='TimePassed'> &nbsp; ${Date} days ago</span> <br><br>`
+            }
+
+        }
+
+        else {
+            if(Date < 2){
+                info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} hours ago</span> <br><br>`
+            }
+
+            else {
+                info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} hour ago</span> <br><br>`
+            }
+        }
+    }
+
+    else {
+        if (Date < 1) {
+            info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; less than a minute ago</span> <br><br>`
+        }
+
+        else if(Date = 1) {
+            info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minute ago</span> <br><br>`
+        }
+
+        else {
+            info.innerHTML += `<span class='SameLine' id='TimePassed'> &nbsp; ${Date} minutes ago</span> <br><br> `
         }
     }
 }
